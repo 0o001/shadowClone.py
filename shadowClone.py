@@ -9,7 +9,7 @@ shadowClone
 """
 
 def main():
-    parser = argparse.ArgumentParser(description="")
+    parser = argparse.ArgumentParser(description="Git Project Get Only Changed Files")
 
     parser.add_argument("-t", "--target", dest="target", help="Target Git Project Folder", required=True)
     
