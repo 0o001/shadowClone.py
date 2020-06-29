@@ -17,15 +17,18 @@ def main():
 
     if args.target:
         os.chdir(args.target)
+
         gitInfo = os.popen("git show --name-only --oneline HEAD").read()
         gitInfoArray = gitInfo.split("\n")
 
-        with ZipFile(gitInfoArray[0] + ".zip", "w") as zipObj:
+        zipFileName = gitInfoArray[0] + ".zip"
+
+        with ZipFile(zipFileName, "w") as zipObj:
             for item in gitInfoArray[1:-1]:
                 zipObj.write("./" + item)
 
-    print("Files were zipped successfully")
-    print("Zip Path:", os.path.join(os.getcwd(), gitInfoArray[0] + ".zip"))
+        print("Files were zipped successfully")
+        print("Zip Path:", os.path.join(os.getcwd(), zipFileName))
     
 if __name__ == "__main__":
     main()
